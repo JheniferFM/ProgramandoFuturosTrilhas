@@ -91,8 +91,7 @@ python -m pip install --upgrade pip
 
     Você deverá ver a mensagem: `Banco de dados inicializado.`
 
-    *Se você já tentou rodar antes e teve erros como "no such table", é recomendável parar o servidor Flask (se estiver rodando com `CTRL+C`), excluir o arquivo `database.db` (se existir) na raiz do projeto e então executar `python database.py` novamente.*
-    ---
+
 
 
 ```
