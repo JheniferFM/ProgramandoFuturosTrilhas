@@ -1,0 +1,136 @@
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #28a745; /* Verde vibrante */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+    margin-top: 5px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px 0;
+}
+
+h2, h3, h4 {
+    color: #28a745;
+}
+
+.trail-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.trail-card, .form-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.trail-card:hover {
+    transform: translateY(-5px);
+}
+
+.trail-card h3 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.trail-card h3 a:hover {
+    color: #28a745;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+}
+
+.module-list li {
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.module-content {
+    margin-top: 10px;
+    border-left: 3px solid #28a745;
+    padding-left: 10px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+.form-card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-card input[type="text"],
+.form-card input[type="password"],
+.form-card textarea,
+.form-card select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+}

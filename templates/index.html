@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Trilhas de TI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Trilhas de TI</h1>
+            <nav>
+                <a href="/">Home</a>
+                {% if g.user %}
+                    Olá, {{ g.user.username }}!
+                    {% if g.user.role == 'volunteer' %}
+                        <a href="/nova_trilha">Criar Nova Trilha</a>
+                    {% endif %}
+                    <a href="/logout">Sair</a>
+                {% else %}
+                    <a href="/login">Entrar</a>
+                    <a href="/register">Registrar</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Trilhas Disponíveis</h2>
+        <div class="trail-list">
+            {% for trail in trails %}
+            <div class="trail-card">
+                <h3><a href="/trilha/{{ trail.id }}">{{ trail.title }}</a></h3>
+                <p>{{ trail.description }}</p>
+                <p>Dificuldade: <strong>{{ trail.difficulty }}</strong></p>
+            </div>
+            {% else %}
+            <p>Nenhuma trilha disponível ainda.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Plataforma de Trilhas de TI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

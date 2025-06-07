@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ trail.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Trilhas de TI</h1>
+            <nav>
+                <a href="/">Home</a>
+                {% if g.user %}
+                    Olá, {{ g.user.username }}!
+                    {% if g.user.role == 'volunteer' %}
+                        <a href="/nova_trilha">Criar Nova Trilha</a>
+                    {% endif %}
+                    <a href="/logout">Sair</a>
+                {% else %}
+                    <a href="/login">Entrar</a>
+                    <a href="/register">Registrar</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>{{ trail.title }}</h2>
+        <p>{{ trail.description }}</p>
+        <p>Dificuldade: <strong>{{ trail.difficulty }}</strong></p>
+
+        {% if g.user and g.user.role == 'volunteer' %}
+            <a href="/trilha/{{ trail.id }}/novo_modulo" class="button">Adicionar Módulo</a>
+        {% endif %}
+
+        <h3>Módulos:</h3>
+        {% if modules %}
+            <ol class="module-list">
+                {% for module in modules %}
+                <li>
+                    <h4>{{ module.title }}</h4>
+                    <div class="module-content">
+                        {{ module.content | safe }} {# Usar 'safe' para renderizar HTML/Markdown se for o caso #}
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>Nenhum módulo nesta trilha ainda.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Plataforma de Trilhas de TI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

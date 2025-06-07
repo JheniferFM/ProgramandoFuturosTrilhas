@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Trilha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Trilhas de TI</h1>
+            <nav>
+                <a href="/">Home</a>
+                {% if g.user %}
+                    Olá, {{ g.user.username }}!
+                    {% if g.user.role == 'volunteer' %}
+                        <a href="/nova_trilha">Criar Nova Trilha</a>
+                    {% endif %}
+                    <a href="/logout">Sair</a>
+                {% else %}
+                    <a href="/login">Entrar</a>
+                    <a href="/register">Registrar</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Criar Nova Trilha</h2>
+        <form action="/nova_trilha" method="POST" class="form-card">
+            <label for="title">Título da Trilha:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" rows="5"></textarea>
+
+            <label for="difficulty">Dificuldade:</label>
+            <select id="difficulty" name="difficulty" required>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+            </select>
+
+            <button type="submit" class="button">Criar Trilha</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Plataforma de Trilhas de TI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
