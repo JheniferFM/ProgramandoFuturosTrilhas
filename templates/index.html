@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Trilhas de TI</title>
+    <title>Programando Futuros - Desvende o Mundo da Tecnologia!</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Trilhas de TI</h1>
+            <h1>Programando <span style="color: var(--azul-eletrico);">Futuros</span></h1>
             <nav>
                 <a href="/">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#trilhas-destaque">Trilhas</a>
                 {% if g.user %}
-                    Olá, {{ g.user.username }}!
+                    <span class="user-info">Olá, {{ g.user.username }}!</span>
                     {% if g.user.role == 'volunteer' %}
                         <a href="/nova_trilha">Criar Nova Trilha</a>
                     {% endif %}
@@ -26,24 +30,65 @@
         </div>
     </header>
 
-    <main class="container">
-        <h2>Trilhas Disponíveis</h2>
-        <div class="trail-list">
-            {% for trail in trails %}
-            <div class="trail-card">
-                <h3><a href="/trilha/{{ trail.id }}">{{ trail.title }}</a></h3>
-                <p>{{ trail.description }}</p>
-                <p>Dificuldade: <strong>{{ trail.difficulty }}</strong></p>
+    <main>
+        <section class="project-info" id="home">
+            <div class="container">
+                <h2>Transforme seu Potencial com a <br> <span style="color: var(--azul-eletrico);">Programando Futuros</span>!</h2>
+                <p>Prepare-se para o mercado de TI com trilhas de aprendizado práticas e atualizadas. Nossos <span style="color: var(--azul-eletrico); font-weight: 700;">voluntários</span> dedicados criam e atualizam conteúdos de ponta para que <span style="color: var(--azul-eletrico); font-weight: 700;">aprendizes</span> como você alcancem o sucesso.</p>
+                <a href="#trilhas-destaque" class="button">Começar Minha Jornada <i class="fas fa-rocket"></i></a>
             </div>
-            {% else %}
-            <p>Nenhuma trilha disponível ainda.</p>
-            {% endfor %}
-        </div>
+        </section>
+
+        <section class="container" id="sobre">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-eletrico);">Sobre a <span style="color: var(--laranja-vibrante);">Programando Futuros</span></h2>
+            <p style="font-size: 1.15rem; color: var(--texto-secundario); text-align: center; margin-bottom: 50px;">
+                Nós somos uma comunidade dedicada a democratizar o acesso à educação em Tecnologia da Informação. Acreditamos que o conhecimento é a chave para transformar vidas e carreiras. Por isso, oferecemos um ambiente colaborativo onde <span style="color: var(--laranja-vibrante); font-weight: 700;">aprendizes</span> de todos os níveis podem encontrar seu caminho na TI, e <span style="color: var(--laranja-vibrante); font-weight: 700;">voluntários</span> passionados compartilham sua expertise.
+            </p>
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Aprendizado Estruturado</h3>
+                    <p>Trilhas cuidadosamente elaboradas para guiar você desde o básico até o avançado.</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Comunidade Voluntária</h3>
+                    <p>Conteúdo atualizado e de qualidade, criado e mantido por profissionais experientes.</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Projetos Práticos</h3>
+                    <p>Coloque a mão na massa e desenvolva habilidades reais para o mercado de trabalho.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-trails-section" id="trilhas-destaque">
+            <div class="container">
+                <h2>Trilhas em <span style="color: var(--azul-eletrico);">Destaque</span></h2>
+                <div class="trail-list">
+                    {# Itere sobre as trilhas. Você pode adicionar um loop.index ou slice aqui para mostrar apenas algumas, ex: {% for trail in trails[:3] %} #}
+                    {% for trail in trails %}
+                    <div class="trail-card">
+                        <h3>{{ trail.title }}</h3>
+                        <p>{{ trail.description }}</p>
+                        <p>Dificuldade: <span class="difficulty">{{ trail.difficulty }}</span></p>
+                        <a href="/trilha/{{ trail.id }}" class="action-link">Acessar Trilha <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    {% else %}
+                    <p style="text-align: center; font-size: 1.2rem; color: var(--texto-secundario); padding: 30px; grid-column: 1 / -1;">
+                        Nenhuma trilha em destaque disponível ainda. Voluntários estão preparando conteúdo incrível!
+                    </p>
+                    {% endfor %}
+                </div>
+                <a href="/trilhas" class="see-all-trails-button">Ver Todas as Trilhas <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Plataforma de Trilhas de TI. Todos os direitos reservados.</p>
+            <p>&copy; 2025 <span style="color: var(--laranja-vibrante);">Programando Futuros</span>. Todos os direitos reservados. | <a href="#">Política de Privacidade</a></p>
         </div>
     </footer>
 </body>

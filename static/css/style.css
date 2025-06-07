@@ -1,136 +1,692 @@
 /* static/css/style.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+
+/* Paleta de Cores:
+    Fundo Escuro com Tons Vibrantes de Laranja e Azul
+
+    Fundo Principal:        #1A202C (Dark Blue/Grey)
+    Elementos Secundários:  #2D3748 (Slightly Lighter Dark Blue/Grey)
+    Laranja Vibrante:       #FF7F50 (Coral / Tangerine - um laranja mais suave e moderno)
+    Azul Elétrico:          #00BFFF (Deep Sky Blue - um azul vibrante)
+    Texto Principal:        #F7FAFC (Off-White)
+    Texto Secundário:       #CBD5E0 (Light Grey)
+*/
+
+/* Variáveis CSS para cores - Facilita a manutenção */
+:root {
+    --fundo-principal: #1A202C;
+    --elementos-secundarios: #2D3748;
+    --laranja-vibrante: #FF7F50;
+    --azul-eletrico: #00BFFF;
+    --texto-principal: #F7FAFC;
+    --texto-secundario: #CBD5E0;
+    --sombra-escura: rgba(0, 0, 0, 0.4);
+    --sombra-media: rgba(0, 0, 0, 0.2);
+    --sombra-clara-brilho: rgba(0, 191, 255, 0.5); /* Para brilhos azuis */
+    --sombra-laranja-brilho: rgba(255, 127, 80, 0.6); /* Para brilhos laranjas */
 }
 
+/* --- Reset e Configurações Básicas --- */
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+body {
+    font-family: 'Inter', sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
+    margin: 0;
+    padding: 0;
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Importar fonte do Google Fonts (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 .container {
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    color: var(--laranja-vibrante);
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+}
+
+/* --- Header --- */
 header {
-    background-color: #28a745; /* Verde vibrante */
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--elementos-secundarios);
+    color: var(--texto-principal);
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 10px var(--sombra-escura);
+    border-bottom: 3px solid var(--azul-eletrico);
+    position: sticky; /* Sticky header */
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de tudo */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
     margin: 0;
-    display: inline-block;
+    color: var(--laranja-vibrante);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px var(--sombra-laranja-brilho);
+    transition: transform 0.3s ease-in-out;
 }
 
-header nav {
-    float: right;
-    margin-top: 5px;
+header h1:hover {
+    transform: scale(1.03); /* Efeito de zoom no hover */
 }
 
 header nav a {
-    color: white;
+    color: var(--texto-principal);
     text-decoration: none;
-    margin-left: 15px;
-    font-weight: bold;
+    margin-left: 28px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
 }
 
 header nav a:hover {
-    text-decoration: underline;
+    color: var(--azul-eletrico);
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px var(--sombra-clara-brilho);
 }
 
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--laranja-vibrante);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+.user-info {
+    color: var(--azul-eletrico);
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+/* --- Seção de Informações do Projeto (Hero Section) --- */
+.project-info {
+    background: linear-gradient(135deg, var(--elementos-secundarios) 0%, var(--fundo-principal) 100%);
+    padding: 7rem 0; /* Mais padding para ser uma seção de destaque */
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 3px solid var(--laranja-vibrante);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px var(--sombra-escura);
+}
+
+.project-info .container {
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-info h2 {
+    color: var(--laranja-vibrante);
+    font-size: 3.8rem; /* Título maior */
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px var(--sombra-laranja-brilho); /* Brilho neon mais forte */
+    font-weight: 700;
+    animation: fadeInScale 1s ease-out; /* Animação ao carregar */
+}
+
+.project-info p {
+    font-size: 1.35rem; /* Texto maior e mais legível */
+    color: var(--texto-secundario);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto;
+    font-weight: 400;
+    animation: fadeIn 1.5s ease-out; /* Animação ao carregar */
+}
+
+/* Efeito de grade/pontos de fundo sutil */
+.project-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, var(--elementos-secundarios) 1px, transparent 1px);
+    background-size: 25px 25px; /* Tamanho dos pontos */
+    opacity: 0.1;
+    z-index: 0;
+    animation: moveGrid 30s linear infinite; /* Animação de movimento da grade */
+}
+
+/* --- Seção de Recursos (Nova Seção) --- */
+.resources-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--fundo-principal);
+}
+
+.resources-section h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: var(--azul-eletrico); /* Título em azul elétrico */
+    text-shadow: 0 0 10px var(--sombra-clara-brilho);
+}
+
+.resource-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.resource-card {
+    background-color: var(--elementos-secundarios);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--sombra-media);
+    width: calc(33% - 30px); /* Ajuste para 3 colunas */
+    min-width: 280px;
+    text-align: center;
+    border: 2px solid var(--azul-eletrico);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 25px var(--sombra-escura), 0 0 20px var(--sombra-clara-brilho);
+    background-color: #3B4B65; /* Levemente mais claro no hover */
+}
+
+.resource-card .icon {
+    font-size: 4rem;
+    color: var(--laranja-vibrante);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.resource-card:hover .icon {
+    color: var(--azul-eletrico); /* Ícone muda para azul no hover */
+}
+
+.resource-card h3 {
+    font-size: 1.8rem;
+    color: var(--texto-principal);
+    margin-bottom: 15px;
+}
+
+.resource-card p {
+    color: var(--texto-secundario);
+    font-size: 1.05rem;
+}
+
+
+/* --- Main Content (para o resto do conteúdo, como trilhas) --- */
 main {
-    padding: 20px 0;
+    padding: 40px 0;
 }
 
-h2, h3, h4 {
-    color: #28a745;
+main h2 {
+    color: var(--laranja-vibrante);
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--sombra-laranja-brilho);
+}
+
+/* --- Lista de Trilhas (Cards em Destaque) --- */
+.featured-trails-section {
+    padding: 60px 0;
+    background-color: var(--fundo-principal); /* Garante que essa seção tenha o fundo principal */
+}
+
+.featured-trails-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--laranja-vibrante);
+    text-shadow: 0 0 12px var(--sombra-laranja-brilho);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.featured-trails-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 150px;
+    height: 4px;
+    background-color: var(--azul-eletrico); /* Linha de destaque azul */
+    border-radius: 2px;
 }
 
 .trail-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 35px;
+    padding: 0 15px;
+    justify-content: center;
+    margin-top: 40px;
 }
 
-.trail-card, .form-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: transform 0.2s;
+.trail-card {
+    background-color: var(--elementos-secundarios);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--sombra-media);
+    padding: 30px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--laranja-vibrante); /* Borda laranja principal */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Garante que cards de diferentes alturas se alinhem */
+}
+
+.trail-card::before { /* Efeito de brilho de canto */
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: all 0.4s ease-out;
+    opacity: 0;
+}
+
+.trail-card:hover::before {
+    opacity: 1;
+    transform: scale(1.5);
 }
 
 .trail-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-12px); /* Elevação mais notável */
+    box-shadow: 0 15px 30px var(--sombra-escura), 0 0 20px var(--sombra-clara-brilho); /* Sombra e brilho combinados */
+    border: 2px solid var(--azul-eletrico); /* Borda azul no hover */
 }
 
-.trail-card h3 a {
-    color: #333;
-    text-decoration: none;
+.trail-card h3 {
+    color: var(--azul-eletrico); /* Título do card em azul */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 0 8px var(--sombra-clara-brilho);
 }
 
-.trail-card h3 a:hover {
-    color: #28a745;
+.trail-card p {
+    color: var(--texto-secundario);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    text-align: center;
+    line-height: 1.5;
+    flex-grow: 1; /* Para descrições de tamanhos variados */
 }
 
-.module-list {
-    list-style: none;
-    padding: 0;
-}
-
-.module-list li {
-    background-color: #e9ecef;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-.module-content {
-    margin-top: 10px;
-    border-left: 3px solid #28a745;
-    padding-left: 10px;
-}
-
-.button {
+.trail-card .difficulty {
+    color: var(--fundo-principal); /* Texto escuro no fundo do badge */
+    font-weight: bold;
+    background-color: var(--laranja-vibrante); /* Fundo laranja para o nível de dificuldade */
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.95rem;
     display: inline-block;
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 0 10px var(--sombra-laranja-brilho);
 }
 
-.button:hover {
-    background-color: #218838;
+.trail-card .action-link {
+    display: block;
+    background-color: var(--azul-eletrico); /* Botão em azul */
+    color: var(--fundo-principal);
+    padding: 14px 25px;
+    border-radius: 8px; /* Cantos levemente menos arredondados */
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px var(--sombra-media);
+    font-size: 1.1rem;
+}
+
+.trail-card .action-link:hover {
+    background-color: var(--laranja-vibrante); /* Laranja no hover */
+    color: var(--fundo-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--sombra-escura), 0 0 15px var(--sombra-laranja-brilho);
+}
+
+/* Botão "Ver Todas as Trilhas" */
+.see-all-trails-button {
+    display: block;
+    width: fit-content;
+    margin: 50px auto 0 auto; /* Centraliza e adiciona espaço acima */
+    background-color: var(--laranja-vibrante);
+    color: var(--fundo-principal);
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px var(--sombra-escura);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 3px solid var(--azul-eletrico); /* Borda inicial azul */
+}
+
+.see-all-trails-button:hover {
+    background-color: var(--azul-eletrico);
+    color: var(--fundo-principal);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px var(--sombra-escura), 0 0 25px var(--sombra-clara-brilho);
+    border-color: var(--laranja-vibrante); /* Borda laranja no hover */
+}
+
+
+/* --- Formulários (Mantido para contexto, mas não usado na Home) --- */
+.form-card {
+    background-color: var(--elementos-secundarios);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--sombra-escura);
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 550px;
+    border: 2px solid var(--laranja-vibrante);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, rgba(0,191,255,0.1) 25%, transparent 25%, transparent 75%, rgba(0,191,255,0.1) 75%, rgba(0,191,255,0.1)), linear-gradient(45deg, rgba(0,191,255,0.1) 25%, transparent 25%, transparent 75%, rgba(0,191,255,0.1) 75%, rgba(0,191,255,0.1));
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.form-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.form-card h2 {
+    color: var(--laranja-vibrante);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 0 0 5px var(--sombra-laranja-brilho);
 }
 
 .form-card label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--texto-principal);
 }
 
 .form-card input[type="text"],
 .form-card input[type="password"],
 .form-card textarea,
 .form-card select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--azul-eletrico);
+    border-radius: 6px;
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    font-size: 1.05rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.form-card input[type="text"]:focus,
+.form-card input[type="password"]:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+    outline: none;
+    border-color: var(--laranja-vibrante);
+    box-shadow: 0 0 0 3px var(--sombra-laranja-brilho);
+}
+
+/* --- Botões Genéricos --- */
+.button {
+    display: inline-block;
+    background-color: var(--laranja-vibrante);
+    color: var(--fundo-principal);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 15px;
+    border: 2px solid var(--azul-eletrico);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.15rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px var(--sombra-laranja-brilho);
+}
+
+.button:hover {
+    background-color: var(--azul-eletrico);
+    color: var(--fundo-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--sombra-clara-brilho);
+    border-color: var(--laranja-vibrante);
+}
+
+/* --- Lista de Módulos (para trilha_detalhe.html, mantido) --- */
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.module-list li {
+    background-color: var(--elementos-secundarios);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--sombra-media);
+    color: var(--texto-principal);
+    border: 2px solid var(--azul-eletrico);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px var(--sombra-escura);
+}
+
+.module-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: var(--laranja-vibrante);
+    border-radius: 10px 0 0 10px;
+}
+
+.module-list li h4 {
+    color: var(--laranja-vibrante);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--sombra-laranja-brilho);
+    margin-left: 10px;
+}
+
+.module-content {
+    margin-top: 15px;
+    border-left: 4px solid var(--azul-eletrico);
+    padding-left: 15px;
+    color: var(--texto-secundario);
+}
+
+/* --- Footer --- */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--elementos-secundarios);
+    color: var(--texto-secundario);
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 20px;
+    padding: 2rem 0; /* Mais padding no footer */
+    margin-top: 60px; /* Mais espaço superior */
+    font-size: 0.95rem;
+    box-shadow: 0 -4px 10px var(--sombra-escura);
+    border-top: 3px solid var(--laranja-vibrante);
+}
+
+footer a {
+    color: var(--azul-eletrico);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--laranja-vibrante);
+    text-shadow: 0 0 8px var(--sombra-laranja-brilho);
+}
+
+/* --- Animações --- */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes moveGrid {
+    from { background-position: 0 0; }
+    to { background-position: 200px 200px; } /* Movimento sutil da grade */
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header nav {
+        margin-top: 15px;
+    }
+
+    header nav a {
+        margin: 0 10px;
+        font-size: 0.95rem;
+    }
+
+    .project-info {
+        padding: 4rem 0;
+    }
+
+    .project-info h2 {
+        font-size: 2.8rem;
+    }
+
+    .project-info p {
+        font-size: 1.15rem;
+    }
+
+    .resources-section h2, .featured-trails-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .resource-card {
+        width: calc(50% - 30px); /* 2 colunas em tablets */
+    }
+
+    .trail-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .trail-card h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav a {
+        margin: 0 5px;
+        font-size: 0.8rem;
+    }
+
+    .project-info h2 {
+        font-size: 2.2rem;
+    }
+
+    .project-info p {
+        font-size: 1rem;
+    }
+
+    .resources-section h2, .featured-trails-section h2 {
+        font-size: 2rem;
+    }
+
+    .resource-cards {
+        flex-direction: column; /* Uma coluna em celulares */
+        align-items: center;
+    }
+
+    .resource-card {
+        width: 90%; /* Ocupa quase toda a largura */
+    }
+
+    .trail-list {
+        grid-template-columns: 1fr; /* Uma coluna em celulares */
+    }
+
+    .trail-card {
+        padding: 25px;
+    }
+
+    .trail-card h3 {
+        font-size: 1.6rem;
+    }
 }
