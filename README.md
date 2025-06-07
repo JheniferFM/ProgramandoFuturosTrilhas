@@ -92,6 +92,40 @@ python -m pip install --upgrade pip
     Você deverá ver a mensagem: `Banco de dados inicializado.`
 
     *Se você já tentou rodar antes e teve erros como "no such table", é recomendável parar o servidor Flask (se estiver rodando com `CTRL+C`), excluir o arquivo `database.db` (se existir) na raiz do projeto e então executar `python database.py` novamente.*
+    ---
+
+
+```
+plataforma_trilhas/
+├── app.py
+├── config.py
+├── database.py
+├── models.py
+├── schema.sql
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── script.js
+└── templates/
+    ├── index.html
+    ├── login.html
+    ├── nova_trilha.html
+    ├── novo_modulo.html
+    ├── register.html
+    └── trilha_detalhe.html
+```
+
+---
+
+### Observações Importantes:
+
+* A pasta **`plataforma_trilhas/`** é a raiz do seu projeto.
+* Os arquivos `.py` e `.sql` (exceto os que estão dentro de `static/` ou `templates/`) devem estar diretamente dentro da pasta raiz.
+* A pasta **`static/`** contém todos os seus arquivos de CSS e JavaScript (e outras mídias, se você adicionar no futuro).
+* A pasta **`templates/`** contém todos os seus arquivos HTML.
+
+Essa organização ajuda a manter o projeto limpo, modular e fácil de entender, o que é fundamental para a arquitetura MVC.
 
 ### 4\. Rodar a Aplicação
 
