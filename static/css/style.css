@@ -178,7 +178,7 @@ header nav a:hover::after {
     animation: moveGrid 30s linear infinite; /* Animação de movimento da grade */
 }
 
-/* --- Seção de Recursos (Nova Seção) --- */
+/* --- Seção de Recursos (Mantida) --- */
 .resources-section {
     padding: 60px 0;
     text-align: center;
@@ -204,7 +204,7 @@ header nav a:hover::after {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 6px 15px var(--sombra-media);
-    width: calc(33% - 30px); /* Ajuste para 3 colunas */
+    width: calc(33% - 30px);
     min-width: 280px;
     text-align: center;
     border: 2px solid var(--azul-eletrico);
@@ -239,19 +239,121 @@ header nav a:hover::after {
     font-size: 1.05rem;
 }
 
+/* --- Nova Seção: Explore Áreas de TI --- */
+.explore-areas-section {
+    padding: 60px 0;
+    background-color: var(--fundo-principal);
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima do efeito de fundo */
+    overflow: hidden; /* Para garantir que as sombras e efeitos fiquem dentro */
+}
+
+.explore-areas-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 191, 255, 0.05), transparent 30%, rgba(255, 127, 80, 0.05), transparent 70%);
+    background-size: 200% 200%;
+    animation: gradientFlow 15s ease infinite alternate; /* Efeito de fluxo de gradiente */
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.explore-areas-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    color: var(--laranja-vibrante);
+    text-shadow: 0 0 15px var(--sombra-laranja-brilho);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.explore-areas-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 180px;
+    height: 4px;
+    background-color: var(--azul-eletrico);
+    border-radius: 2px;
+}
+
+.area-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mais cards em linha */
+    gap: 25px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.area-card {
+    background-color: var(--elementos-secundarios);
+    border-radius: 15px; /* Mais arredondado */
+    box-shadow: 0 4px 12px var(--sombra-media);
+    padding: 25px;
+    text-align: center;
+    border: 2px solid var(--azul-eletrico);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Para o efeito de glitch */
+}
+
+.area-card::before { /* Efeito de scanline sutil */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 1px,
+        rgba(0, 191, 255, 0.05) 1px,
+        rgba(0, 191, 255, 0.05) 3px
+    );
+    z-index: 0;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.area-card:hover {
+    transform: translateY(-8px) scale(1.03); /* Elevação e leve zoom */
+    box-shadow: 0 10px 25px var(--sombra-escura), 0 0 20px var(--sombra-laranja-brilho);
+    background-color: #3B4B65; /* Fundo levemente mais claro no hover */
+    border-color: var(--laranja-vibrante); /* Borda laranja no hover */
+    animation: glitchHover 0.2s linear infinite alternate; /* Efeito de glitch no hover */
+}
+
+.area-card .icon {
+    font-size: 3.5rem; /* Ícone um pouco menor */
+    color: var(--laranja-vibrante);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1; /* Garante que o ícone fique acima do scanline */
+}
+
+.area-card:hover .icon {
+    color: var(--azul-eletrico);
+}
+
+.area-card h3 {
+    font-size: 1.5rem; /* Título menor para se ajustar aos cards */
+    color: var(--texto-principal);
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
 
 /* --- Main Content (para o resto do conteúdo, como trilhas) --- */
 main {
     padding: 40px 0;
-}
-
-main h2 {
-    color: var(--laranja-vibrante);
-    font-size: 3rem;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 700;
-    text-shadow: 0 0 10px var(--sombra-laranja-brilho);
 }
 
 /* --- Lista de Trilhas (Cards em Destaque) --- */
@@ -304,7 +406,7 @@ main h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%; /* Garante que cards de diferentes alturas se alinhem */
+    height: 100%;
 }
 
 .trail-card::before { /* Efeito de brilho de canto */
@@ -326,13 +428,13 @@ main h2 {
 }
 
 .trail-card:hover {
-    transform: translateY(-12px); /* Elevação mais notável */
-    box-shadow: 0 15px 30px var(--sombra-escura), 0 0 20px var(--sombra-clara-brilho); /* Sombra e brilho combinados */
-    border: 2px solid var(--azul-eletrico); /* Borda azul no hover */
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px var(--sombra-escura), 0 0 20px var(--sombra-clara-brilho);
+    border-color: var(--azul-eletrico);
 }
 
 .trail-card h3 {
-    color: var(--azul-eletrico); /* Título do card em azul */
+    color: var(--azul-eletrico);
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 2.1rem;
@@ -347,13 +449,13 @@ main h2 {
     font-size: 1.05rem;
     text-align: center;
     line-height: 1.5;
-    flex-grow: 1; /* Para descrições de tamanhos variados */
+    flex-grow: 1;
 }
 
 .trail-card .difficulty {
-    color: var(--fundo-principal); /* Texto escuro no fundo do badge */
+    color: var(--fundo-principal);
     font-weight: bold;
-    background-color: var(--laranja-vibrante); /* Fundo laranja para o nível de dificuldade */
+    background-color: var(--laranja-vibrante);
     padding: 8px 18px;
     border-radius: 25px;
     font-size: 0.95rem;
@@ -366,10 +468,10 @@ main h2 {
 
 .trail-card .action-link {
     display: block;
-    background-color: var(--azul-eletrico); /* Botão em azul */
+    background-color: var(--azul-eletrico);
     color: var(--fundo-principal);
     padding: 14px 25px;
-    border-radius: 8px; /* Cantos levemente menos arredondados */
+    border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
     text-align: center;
@@ -380,7 +482,7 @@ main h2 {
 }
 
 .trail-card .action-link:hover {
-    background-color: var(--laranja-vibrante); /* Laranja no hover */
+    background-color: var(--laranja-vibrante);
     color: var(--fundo-principal);
     transform: translateY(-3px);
     box-shadow: 0 6px 15px var(--sombra-escura), 0 0 15px var(--sombra-laranja-brilho);
@@ -390,7 +492,7 @@ main h2 {
 .see-all-trails-button {
     display: block;
     width: fit-content;
-    margin: 50px auto 0 auto; /* Centraliza e adiciona espaço acima */
+    margin: 50px auto 0 auto;
     background-color: var(--laranja-vibrante);
     color: var(--fundo-principal);
     padding: 18px 40px;
@@ -400,7 +502,25 @@ main h2 {
     font-weight: 700;
     box-shadow: 0 8px 20px var(--sombra-escura);
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 3px solid var(--azul-eletrico); /* Borda inicial azul */
+    border: 3px solid var(--azul-eletrico);
+    position: relative;
+    overflow: hidden;
+}
+
+.see-all-trails-button::before { /* Efeito de "barrinha de carregamento" no botão */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease-out;
+    transform: skewX(-20deg);
+}
+
+.see-all-trails-button:hover::before {
+    left: 100%;
 }
 
 .see-all-trails-button:hover {
@@ -408,7 +528,7 @@ main h2 {
     color: var(--fundo-principal);
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 12px 25px var(--sombra-escura), 0 0 25px var(--sombra-clara-brilho);
-    border-color: var(--laranja-vibrante); /* Borda laranja no hover */
+    border-color: var(--laranja-vibrante);
 }
 
 
@@ -564,8 +684,8 @@ footer {
     background-color: var(--elementos-secundarios);
     color: var(--texto-secundario);
     text-align: center;
-    padding: 2rem 0; /* Mais padding no footer */
-    margin-top: 60px; /* Mais espaço superior */
+    padding: 2rem 0;
+    margin-top: 60px;
     font-size: 0.95rem;
     box-shadow: 0 -4px 10px var(--sombra-escura);
     border-top: 3px solid var(--laranja-vibrante);
@@ -595,8 +715,23 @@ footer a:hover {
 
 @keyframes moveGrid {
     from { background-position: 0 0; }
-    to { background-position: 200px 200px; } /* Movimento sutil da grade */
+    to { background-position: 200px 200px; }
 }
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes glitchHover {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
 
 /* --- Responsividade --- */
 @media (max-width: 768px) {
@@ -630,20 +765,24 @@ footer a:hover {
         font-size: 1.15rem;
     }
 
-    .resources-section h2, .featured-trails-section h2 {
+    .resources-section h2, .explore-areas-section h2, .featured-trails-section h2 {
         font-size: 2.5rem;
     }
 
-    .resource-card {
+    .resource-card, .area-card {
         width: calc(50% - 30px); /* 2 colunas em tablets */
     }
 
-    .trail-list {
+    .trail-list, .area-cards {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .trail-card h3 {
         font-size: 1.8rem;
+    }
+
+    .area-card h3 {
+        font-size: 1.3rem;
     }
 }
 
@@ -665,16 +804,16 @@ footer a:hover {
         font-size: 1rem;
     }
 
-    .resources-section h2, .featured-trails-section h2 {
+    .resources-section h2, .explore-areas-section h2, .featured-trails-section h2 {
         font-size: 2rem;
     }
 
-    .resource-cards {
+    .resource-cards, .area-cards {
         flex-direction: column; /* Uma coluna em celulares */
         align-items: center;
     }
 
-    .resource-card {
+    .resource-card, .area-card {
         width: 90%; /* Ocupa quase toda a largura */
     }
 

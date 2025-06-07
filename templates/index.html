@@ -15,6 +15,7 @@
             <nav>
                 <a href="/">Home</a>
                 <a href="#sobre">Sobre</a>
+                <a href="#explore-areas">Explorar Áreas</a> {# Novo link #}
                 <a href="#trilhas-destaque">Trilhas</a>
                 {% if g.user %}
                     <span class="user-info">Olá, {{ g.user.username }}!</span>
@@ -35,7 +36,47 @@
             <div class="container">
                 <h2>Transforme seu Potencial com a <br> <span style="color: var(--azul-eletrico);">Programando Futuros</span>!</h2>
                 <p>Prepare-se para o mercado de TI com trilhas de aprendizado práticas e atualizadas. Nossos <span style="color: var(--azul-eletrico); font-weight: 700;">voluntários</span> dedicados criam e atualizam conteúdos de ponta para que <span style="color: var(--azul-eletrico); font-weight: 700;">aprendizes</span> como você alcancem o sucesso.</p>
-                <a href="#trilhas-destaque" class="button">Começar Minha Jornada <i class="fas fa-rocket"></i></a>
+                <a href="#explore-areas" class="button">Começar Minha Jornada <i class="fas fa-rocket"></i></a>
+            </div>
+        </section>
+
+        <section class="explore-areas-section" id="explore-areas">
+            <div class="container">
+                <h2>Explore Áreas de <span style="color: var(--azul-eletrico);">Tecnologia</span></h2>
+                <div class="area-cards">
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>Desenvolvimento Web</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Desenvolvimento Mobile</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-brain"></i></div>
+                        <h3>Inteligência Artificial</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-database"></i></div>
+                        <h3>Ciência de Dados</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Cibersegurança</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Cloud Computing</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Desenvolvimento de Jogos</h3>
+                    </div>
+                    <div class="area-card">
+                        <div class="icon"><i class="fas fa-robot"></i></div>
+                        <h3>Automação e Robótica</h3>
+                    </div>
+                </div>
             </div>
         </section>
 
