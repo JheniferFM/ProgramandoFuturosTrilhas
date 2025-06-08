@@ -327,7 +327,6 @@ header nav a:hover::after {
     box-shadow: 0 10px 25px var(--sombra-escura), 0 0 20px var(--sombra-laranja-brilho);
     background-color: #3B4B65; /* Fundo levemente mais claro no hover */
     border-color: var(--laranja-vibrante); /* Borda laranja no hover */
-    animation: glitchHover 0.2s linear infinite alternate; /* Efeito de glitch no hover */
 }
 
 .area-card .icon {
