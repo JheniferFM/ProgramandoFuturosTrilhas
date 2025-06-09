@@ -148,7 +148,7 @@ header nav a:hover::after {
     color: var(--laranja-vibrante);
     font-size: 3.8rem; /* Título maior */
     margin-bottom: 25px;
-    text-shadow: 0 0 15px var(--sombra-laranja-brilho); /* Brilho neon mais forte */
+    
     font-weight: 700;
     animation: fadeInScale 1s ease-out; /* Animação ao carregar */
 }
@@ -189,7 +189,7 @@ header nav a:hover::after {
     font-size: 3rem;
     margin-bottom: 40px;
     color: var(--azul-eletrico); /* Título em azul elétrico */
-    text-shadow: 0 0 10px var(--sombra-clara-brilho);
+    
 }
 
 .resource-cards {
@@ -266,7 +266,7 @@ header nav a:hover::after {
     font-size: 3.5rem;
     margin-bottom: 40px;
     color: var(--laranja-vibrante);
-    text-shadow: 0 0 15px var(--sombra-laranja-brilho);
+    
     position: relative;
     padding-bottom: 15px;
 }
@@ -366,7 +366,6 @@ main {
     margin-bottom: 40px;
     text-align: center;
     color: var(--laranja-vibrante);
-    text-shadow: 0 0 12px var(--sombra-laranja-brilho);
     position: relative;
     padding-bottom: 15px;
 }
@@ -567,7 +566,6 @@ main {
     color: var(--laranja-vibrante);
     margin-bottom: 20px;
     font-size: 2rem;
-    text-shadow: 0 0 5px var(--sombra-laranja-brilho);
 }
 
 .form-card label {
