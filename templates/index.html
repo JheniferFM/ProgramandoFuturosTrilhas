@@ -11,21 +11,14 @@
 <body>
     <header>
         <div class="container">
-            <h1>Programando <span style="color: var(--azul-eletrico);">Futuros</span></h1>
+            <h1>Programando Futuros</h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#explore-areas">Explorar Áreas</a> {# Novo link #}
-                <a href="#trilhas-destaque">Trilhas</a>
                 {% if g.user %}
                     <span class="user-info">Olá, {{ g.user.username }}!</span>
                     {% if g.user.role == 'volunteer' %}
                         <a href="/nova_trilha">Criar Nova Trilha</a>
                     {% endif %}
                     <a href="/logout">Sair</a>
-                {% else %}
-                    <a href="/login">Entrar</a>
-                    <a href="/register">Registrar</a>
                 {% endif %}
             </nav>
         </div>
@@ -35,8 +28,8 @@
         <section class="project-info" id="home">
             <div class="container">
                 <h2><span style="color: var(--azul-eletrico);">Transforme seu potencial com o Programando Futuros</span></h2>
-                <p>Prepare-se para o mercado de TI com trilhas de aprendizado práticas e atualizadas. Nossos <span style="color: var(--azul-eletrico); font-weight: 700;">voluntários</span> dedicados criam e atualizam conteúdos de ponta para que <span style="color: var(--azul-eletrico); font-weight: 700;">aprendizes</span> como você alcancem o sucesso.</p>
-                <a href="#explore-areas" class="button">Começar Minha Jornada <i class="fas fa-rocket"></i></a>
+                <p>Prepare-se para o mercado de TI com trilhas de aprendizado práticas e atualizadas. Nossos <span style="color: var(--laranja-vibrante); font-weight: 700;">voluntários</span> dedicados criam e atualizam conteúdos de ponta para que <span style="color: var(--laranja-vibrante); font-weight: 700;">aprendizes</span> como você alcancem o sucesso.</p>
+                <a href="#explore-areas" class="button">Começar minha jornada <i class="fas fa-rocket"></i></a>
             </div>
         </section>
 
